@@ -1,0 +1,30 @@
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.location-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: #ff385c; /* Airbnb's primary color */
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #e83a4d; /* Darker shade for hover */
+}
