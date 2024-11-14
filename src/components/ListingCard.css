@@ -1,0 +1,33 @@
+.listing-cards-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;  
+  gap: 1rem;  
+}
+
+
+.listing-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+  }
+  
+  .listing-card img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+  }
+  
+  .listing-card .price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff5a5f;
+  }
+  
+  .listing-card .rating {
+    color: #888;
+  }
+  
