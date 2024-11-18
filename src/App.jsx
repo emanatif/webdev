@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import SearchBar from './components/SearchBar';
@@ -140,10 +141,64 @@ const App = () => {
               <ListingCard key={listing.id} {...listing} />
             ))}
         </div>
+=======
+import { useState } from 'react'
+import Navbar from './components/navbar'
+import SearchBar from './components/searchbar'
+import Categories from './components/categories'
+import ListingCard from './components/listingcard'
+import Footer from './components/footer'
+import './App.css'
+
+
+// src/App.jsx
+const mockListings = [
+  {
+      id: 1,
+      image: 'https://via.placeholder.com/300',
+      title: 'Cozy Beachfront Home',
+      type: 'Entire home',
+      guests: 4,
+      bedrooms: 2,
+      bathrooms: 2,
+      price: 120,
+      rating: 4.8,
+  },
+  {
+      id: 2,
+      image: 'https://via.placeholder.com/300',
+      title: 'Mountain Cabin Retreat',
+      type: 'Cabin',
+      guests: 6,
+      bedrooms: 3,
+      bathrooms: 3,
+      price: 180,
+      rating: 4.9,
+  }
+];
+
+
+const App = () => {
+  return (
+    <div>
+      <Navbar />
+      <SearchBar />
+      <Categories />
+      <div className="listings">
+        {mockListings.map((listing, index) => (
+          <ListingCard key={index} {...listing} />
+        ))}
+>>>>>>> 5f8cba447a5ed74e35e95002789bf2629f8a4403
       </div>
       <Footer />
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default App;
+=======
+
+export default App
+
+>>>>>>> 5f8cba447a5ed74e35e95002789bf2629f8a4403
