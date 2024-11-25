@@ -20,7 +20,9 @@ router.get('/:id', (req, res) => {
 router.get('/search', (req, res) => {
   const query = req.query.query.toLowerCase();
   const filteredListings = listings.filter(
-    (listing) => listing.title.toLowerCase().includes(query) || listing.category.toLowerCase().includes(query)
+    (listing) =>
+      listing.title.toLowerCase().includes(query) ||
+      listing.category.toLowerCase().includes(query)
   );
   res.json(filteredListings);
 });

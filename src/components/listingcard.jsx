@@ -1,8 +1,7 @@
+import { Link } from 'react-router-dom';
+import './ListingCard.css';
 
-import React from 'react';
-import './ListingCard.css'; 
-
-const ListingCard = ({ image, title, type, guests, bedrooms, bathrooms, price, rating }) => {
+const ListingCard = ({ id, image, title, type, guests, bedrooms, bathrooms, price, rating }) => {
   return (
     <div className="listing-card">
       <img src={image} alt={title} />
@@ -11,6 +10,10 @@ const ListingCard = ({ image, title, type, guests, bedrooms, bathrooms, price, r
       <p>{guests} guests · {bedrooms} bedrooms · {bathrooms} bathrooms</p>
       <p className="price">${price} per night</p>
       <p className="rating">Rating: {rating}</p>
+
+      <Link to={`/listings/${id}`} className="details-button" aria-label={`View details for ${title}`}>
+        Details
+      </Link>
     </div>
   );
 };
