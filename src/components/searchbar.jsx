@@ -1,12 +1,15 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
 import './SearchBar.css'; 
 
 const SearchBar = () => {
   const [location, setLocation] = useState('');
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleSearch = () => {
-    console.log(`Searching for properties in ${location}`);
+    if (location) {
+      navigate(`/search-results?query=${location}`); // Redirect to search results page with query
+    }
   };
 
   return (

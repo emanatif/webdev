@@ -1,30 +1,42 @@
 const express = require('express');
 const router = express.Router();
-const listings = require('../data/listings.json');
+const { isLoggedIn } = require('../middleware/user');
+const {
+  addPlace,
+  getPlaces,
+  updatePlace,
+  singlePlace,
+  userPlaces,
+  searchPlaces,} = require('../controllers/listingscontrol');
 
-// GET /api/listings: Fetch all listings
-router.get('/', (req, res) => {
-  res.json(listings);
-});
+// @route    GET /api/listings
+//Fetch all listings
+// @access   Public
+router.get('/', getPlaces);
 
-// GET /api/listings/:id: Fetch a listing by ID
-router.get('/:id', (req, res) => {
-  const listing = listings.find((l) => l.id === parseInt(req.params.id));
-  if (!listing) {
-    return res.status(404).json({ message: 'Listing not found' });
-  }
-  res.json(listing);
-});
+// @route    POST /api/listings/add-places
+// Add a new place
+// @access   Private
+router.post('/add-places', isLoggedIn, addPlace);
 
-// GET /api/listings/search: Search listings by query (e.g., location)
-router.get('/search', (req, res) => {
-  const query = req.query.query.toLowerCase();
-  const filteredListings = listings.filter(
-    (listing) =>
-      listing.title.toLowerCase().includes(query) ||
-      listing.category.toLowerCase().includes(query)
-  );
-  res.json(filteredListings);
-});
+// @route    GET /api/listings/user-places
+// Get listings of the logged-in user
+// @access   Private
+router.get('/user-places', isLoggedIn, userPlaces);
+
+// @route    PUT /api/listings/update-place
+// Update a specific place
+// @access   Private
+router.put('/update-place', isLoggedIn, updatePlace);
+
+// @route    GET /api/listings/:id
+// Get details of a single place by ID
+// @access   Public
+router.get('/:id', singlePlace);
+
+// @route    GET /api/listings/search/:key
+// Search listings by keyword
+// @access   Public
+router.get('/search/:key', searchPlaces);
 
 module.exports = router;

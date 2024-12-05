@@ -1,21 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const { isLoggedIn } = require('../middleware/user');
 
-// POST /api/bookings: Mock route for booking a listing
-router.post('/', (req, res) => {
-  const { listingId, checkInDate, checkOutDate, guests } = req.body;
+const {createBookings, getBookings} = require('../controllers/bookingcontrol');
 
+// @route    GET /api/bookings
+// Fetch all bookings for the logged-in user
+// access   Private
+router.get('/', isLoggedIn, getBookings);
 
-  // Mock successful booking response
-  res.status(201).json({
-    message: 'Booking successful!',
-    bookingDetails: {
-      listingId,
-      checkInDate,
-      checkOutDate,
-      guests,
-    },
-  });
-});
-
+// @route    POST /api/bookings
+// Create a new booking
+// Private
+router.post('/', isLoggedIn, createBookings);
 module.exports = router;

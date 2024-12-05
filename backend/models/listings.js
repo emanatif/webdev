@@ -16,4 +16,4 @@ images: {
 picture_url: String
 }
 });
-module.exports = mongoose.model('Listing', ListingSchema);
+module.exports = mongoose.model('Listing', ListingSchema, 'listingsAndReviews'); 
