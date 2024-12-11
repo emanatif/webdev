@@ -1,0 +1,117 @@
+/* Main Container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+  }
+  
+  /* Form Box */
+  .form-box {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Title */
+  .form-box h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form Inputs */
+  .form-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-box input:focus {
+    border-color: #FF5A5F;
+    outline: none;
+  }
+  
+  /* Submit Button */
+  .form-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF5A5F;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-box button:hover {
+    background-color: #FF5A5F;
+  }
+  
+  /* Link to Signup (for login page) or Login (for signup page) */
+  .form-box .link {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .form-box .link a {
+    text-decoration: none;
+    color: #FF5A5F;
+    font-weight: bold;
+  }
+  
+  .form-box .link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Social Login Section (optional) */
+  .social-login {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .social-login button {
+    width: 45%;
+    padding: 10px;
+    background-color: #4285f4;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+  }
+  
+  .social-login button:hover {
+    background-color: #357ae8;
+  }
+  
+  .social-login button:focus {
+    outline: none;
+  }
+  
+  /* Small Screen Adjustments */
+  @media (max-width: 600px) {
+    .form-box {
+      padding: 20px;
+    }
+  
+    .form-box h1 {
+      font-size: 1.5rem;
+    }
+  
+    .form-box input, .form-box button {
+      font-size: 1rem;
+    }
+  }
+  

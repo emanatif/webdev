@@ -7,7 +7,9 @@ const {
   updatePlace,
   singlePlace,
   userPlaces,
-  searchPlaces,} = require('../controllers/listingscontrol');
+  searchPlaces,
+  getCategories,
+} = require('../controllers/listingscontrol');
 
 // @route    GET /api/listings
 //Fetch all listings
@@ -38,5 +40,4 @@ router.get('/:id', singlePlace);
 // Search listings by keyword
 // @access   Public
 router.get('/search/:key', searchPlaces);
-
 module.exports = router;

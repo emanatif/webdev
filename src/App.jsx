@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar';
 import SearchBar from './components/searchbar';
 import Categories from './components/Categories';
 import ListingCard from './components/listingcard';
@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import BookingPage from './pages/bookings';
 import ListingDetails from './pages/listingdetails';
 import SearchResultsPage from './pages/searchresults';
+import SignupPage from './pages/signup';
+import LoginPage from './pages/login';
 import './App.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -50,7 +52,7 @@ const App = () => {
                         listing.category.toLowerCase() === activeCategory.toLowerCase()
                     )
                     .map((listing) => (
-                      <ListingCard key={listing._id} {...listing} /> // Use _id or unique identifier
+                      <ListingCard key={listing._id} id={listing._id}  title={listing.name}  {...listing} />
                     ))}
                 </div>
               </div>
@@ -62,6 +64,10 @@ const App = () => {
           <Route path="/listings/:id" element={<ListingDetails />} />
           {/* Booking Form Route */}
           <Route path="/book/:id" element={<BookingPage />} />
+          {/* Signup Route */}
+          <Route path="/signup" element={<SignupPage />} /> {/* Add Signup Route */}
+          {/* Login Route */}
+          <Route path="/login" element={<LoginPage />} /> {/* Add Login Route */}
         </Routes>
         <Footer />
       </div>

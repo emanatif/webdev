@@ -1,21 +1,29 @@
 import { Link } from 'react-router-dom';
 import './ListingCard.css';
 
-const ListingCard = ({ id, image, title, type, guests, bedrooms, bathrooms, price, rating }) => {
+const ListingCard = ({ id, images, title, property_type, bedrooms, bathrooms, price }) => {
+
+  const pictureUrl = images?.picture_url ;
+ 
   return (
     <div className="listing-card">
-      <img src={image} alt={title} />
+      {/* Image Rendering */}
+      <img 
+        src={pictureUrl} 
+        alt={title || 'Image unavailable'} 
+        className="listing-image" 
+      />
       <h3>{title}</h3>
-      <p>{type}</p>
-      <p>{guests} guests · {bedrooms} bedrooms · {bathrooms} bathrooms</p>
+      <p>{property_type}</p>
+      <p>{bedrooms} bedrooms · {bathrooms} bathrooms</p>
       <p className="price">${price} per night</p>
-      <p className="rating">Rating: {rating}</p>
-
       <Link to={`/listings/${id}`} className="details-button" aria-label={`View details for ${title}`}>
         Details
       </Link>
     </div>
   );
 };
+
+
 
 export default ListingCard;

@@ -1,4 +1,5 @@
 const Listing = require('../models/listings');
+const mongoose = require('mongoose');
 
 // Adds a place in the DB
 exports.addPlace = async (req, res) => {
@@ -153,7 +154,6 @@ exports.getPlaces = async (req, res) => {
   }
 };
 
-// Returns a single place based on the passed place ID
 exports.singlePlace = async (req, res) => {
   try {
     const { id } = req.params;
@@ -184,15 +184,31 @@ exports.singlePlace = async (req, res) => {
 // Search places in the DB
 exports.searchPlaces = async (req, res) => {
   try {
-    const searchword = req.params.key;
+    const searchword = req.query.query; 
+    console.log('Search Query Received:', searchword);
+    if (!searchword) {
+      return res.status(400).json({
+        success: false,
+        message: 'Search query is required',
+      });
+    }
+    console.log('Searching for matches in the database...');
+    
     const matches = await Listing.find({
       $or: [
-        { address: { $regex: searchword, $options: 'i' } },
-        { title: { $regex: searchword, $options: 'i' } },
-        { description: { $regex: searchword, $options: 'i' } },
+        { address: { $regex: `.*${searchword}.*`, $options: 'i' } },
+        { title: { $regex: `.*${searchword}.*`, $options: 'i' } },
+        { description: { $regex: `.*${searchword}.*`, $options: 'i' } },
       ],
     });
-
+    console.log('Matches Found:', matches);
+    if (!matches.length) {
+      console.log(`No listings found for query: "${searchword}"`); 
+      return res.status(404).json({
+        success: false,
+        message: `No listings found for "${searchword}".`,
+      });
+    }
     res.status(200).json({
       success: true,
       message: 'Search results fetched successfully',
@@ -207,3 +223,5 @@ exports.searchPlaces = async (req, res) => {
     });
   }
 };
+
+

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Categories.css'; 
 
-const categories = ['Rooms', 'Cabins', 'Trending', 'Surfing', 'Luxe','Countryside','Islands','Farms','Lakefront','Beachfront'];
+const categories = ['House', 'Cabins', 'Trending', 'Apartment', 'Luxe','Countryside','Islands','Farms','Lakefront','Beachfront'];
 
 const Categories = () => {
   const [activeCategory, setActiveCategory] = useState('');
